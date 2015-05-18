@@ -1,0 +1,127 @@
+$light-blue: #a8c9dd;
+$medium-brown: #736357;
+$transparent: rgba(0,0,0,0);
+
+#templates {
+  display:none;
+}
+
+#app {
+  margin-top: 65px;
+}
+
+#map-canvas {
+  height: 85vh;
+}
+
+
+#itinerary {
+  h3 {
+    text-align: center;
+    #day-title {
+      padding: 5px;
+      border: 1px solid $medium-brown;
+      border-radius: 5px;
+      > * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      > .remove {
+        margin-left: 1em;
+      }
+    }
+  }
+}
+
+
+select {
+  width: calc(100% - 25px);
+}
+
+.btn-circle {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 42%;
+}
+
+.btn-primary {
+  background: darken($light-blue, 20%);
+  border-color: darken($light-blue, 22%);
+  &:hover {
+    background: darken($light-blue, 30%);
+    border-color: darken($light-blue, 32%);
+  }
+}
+
+
+.day-btn {
+  border-width: 2px;
+  width: 30px;
+  height: 30px;
+  padding: 5px 5px;
+  background: $transparent;
+  border-color: $light-blue;
+  color: $light-blue;
+  &:hover {
+    border-color: #fff;
+    color: #fff;
+  }
+  &.current-day {
+    background: $light-blue;
+    color: $medium-brown;
+    &:hover {
+      background: #fff;
+    }
+  }
+}
+
+
+.itinerary-item {
+  > * {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  > .title {
+    width: calc(100% - 24px)
+  }
+}
+
+
+
+
+.navbar-inverse {
+  background: $medium-brown;
+  border-color: darken($medium-brown, 10%);
+}
+
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
+  color: $light-blue;
+}
+
+.navbar-inverse .navbar-brand {
+  padding: 12px 15px;
+  white-space: nowrap;
+  .glyphicon {
+    font-size: 1.2em;
+    margin-right: 5px;
+  }
+  > span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+  box-shadow: inset 0 0 10px darken($medium-brown, 15%);
+  background: darken($medium-brown, 5%);
+  color: lighten($light-blue, 10%);
+  &:hover {
+    background: darken($medium-brown, 10%);
+    box-shadow: inset 0 0 10px darken($medium-brown, 20%);
+    color: #fff;
+  }
+}

@@ -1,0 +1,129 @@
+{% extends 'layout.html' %}
+
+
+{% block content %}
+<div id="templates">
+  <button data-template="day-btn" class="btn btn-circle day-btn"></button>
+
+  <div data-template="itinerary-item" class="itinerary-item">
+    <span class="title"></span><button class="btn btn-xs btn-danger remove btn-circle">x</button>
+  </div>
+
+  <div data-template="day-panel" id="day-panel" class="panel-body">
+    <div>
+      <h4>My Hotel</h4>
+      <ul class="list-group hotels-group">
+        
+      </ul>
+    </div>
+    <div>
+      <h4>My Restaurants</h4>
+      <ul class="list-group restaurants-group">
+        
+      </ul>
+    </div>
+    <div>
+      <h4>My Things To Do</h4>
+      <ul class="list-group thingsToDo-group">
+        
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<div id="app">
+  <div class="row">
+    <div id="map-container" class="col-xs-12 col-sm-8 col-lg-9">
+      <div id="map-canvas"></div>
+    </div>
+    <div class="col-sm-4 col-lg-3">
+      <div id="options" class="panel panel-default col-xs-6 col-sm-12">
+        <div class="panel-body">
+          <div id="hotel-adder">
+            <h4>Hotels</h4>
+            <select></select>
+            <button data-type="hotels" class="btn add-activity btn-primary btn-circle pull-right">+</button>
+          </div>
+
+          <div id="restaurant-adder">
+            <h4>Restaurants</h4>
+            <select></select>
+            <button data-type="restaurants" class="btn add-activity btn-primary btn-circle pull-right">+</button>
+          </div>
+
+          <div id="thingsToDo-adder">
+            <h4>Things To Do</h4>
+            <select></select>
+            <button data-type="thingsToDo" class="btn add-activity btn-primary btn-circle pull-right">+</button>
+          </div>
+        </div>
+      </div>
+      <div id="itinerary" class="col-xs-6 col-sm-12">
+        <h3>
+          <span id="day-title">
+            <span>Day 2</span>
+            <button class="btn btn-xs btn-danger remove btn-circle">x</button>
+          </span>
+        </h3>
+
+        <div class="panel panel-default" id="itinerary">
+          <div class="panel-heading">
+            <div class="day-buttons">
+             <!--  <button class="btn btn-circle day-btn">1</button>
+              <button class="btn btn-circle day-btn current-day">2</button>
+              <button class="btn btn-circle day-btn">3</button> -->
+              <button id="add-day" class="btn btn-circle day-btn">+</button>
+            </div>
+          </div>
+          <div class="panel-body" id="day-panel"></div>
+          <!-- <div class="panel-body">
+            <div>
+              <h4>My Hotel</h4>
+              <ul class="list-group">
+                <div class="itinerary-item">
+                  <span class="title">Andaz Wall Street</span><button class="btn pull-right btn-xs btn-danger remove btn-circle">x</button>
+                </div>
+              </ul>
+            </div>
+            <div>
+              <h4>My Restaurants</h4>
+              <ul class="list-group">
+                <div class="itinerary-item">
+                  <span class="title">Bouley</span><button class="btn btn-xs pull-right btn-danger remove btn-circle">x</button>
+                </div>
+                <div class="itinerary-item">
+                  <span class="title">The Capital Grille</span><button class="btn btn-xs pull-right btn-danger remove btn-circle">x</button>
+                </div>
+              </ul>
+            </div>
+            <div>
+              <h4>My Things To Do</h4>
+              <ul class="list-group">
+                <div class="itinerary-item">
+                  <span class="title">Mahayana Buddhist Temple Association</span><button class="btn btn-xs btn-danger remove btn-circle">x</button>
+                </div>
+                <div class="itinerary-item">
+                  <span class="title">South Street Seaport</span><button class="btn btn-xs btn-danger remove btn-circle">x</button>
+                </div>
+              </ul>
+            </div>
+          </div> -->
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  {% autoescape false %}
+  var rawData = {
+   hotels: {{ hotels | json }},
+   restaurants: {{ restaurants | json }},
+   thingsToDo: {{ thingsToDo | json }}
+ }
+  {% endautoescape %}
+  </script>
+
+{% endblock %}
