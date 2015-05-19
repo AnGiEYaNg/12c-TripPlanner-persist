@@ -2,9 +2,10 @@ var express = require('express')
 var swig = require('swig')
 var nodeSass = require('node-sass-middleware')
 var logger = require('morgan')
-
+var bodyParser = require('body-parser')
 var app = express()
 var path = require('path')
+var days = require('./routes/days');
 module.exports = app
 
 app.use(logger('dev'))
@@ -14,14 +15,20 @@ var sassMiddleware = nodeSass({
   dest: __dirname + '/public',
   debug: true
 });
+
+
 app.use(sassMiddleware);
 
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.engine('html', swig.renderFile);
+
+app.use("/days", days);
 
 //todo 
 /*

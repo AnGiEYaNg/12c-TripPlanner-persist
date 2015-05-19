@@ -93,6 +93,8 @@ router.get('/slowPromises', function(req, res, next) {
 })
 
 router.get('/', function(req, res, next) {
+  // res.redirect('/days');
+
   Promise.join(
     models.Restaurant.find().exec(),
     models.ThingToDo.find().exec(),
