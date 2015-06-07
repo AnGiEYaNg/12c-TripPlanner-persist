@@ -47,22 +47,22 @@ Restarants
 thingsTodo
 -----
                */
-var async = require('async')
-router.get('/fastCb', function(req, res, next) {
-  async.parallel({
-    hotels: function(done) {
-      models.Hotel.find(done)
-    },
-    restaurants: function(done) {
-      models.Restaurant.find(done)
-    },
-    thingsToDo: function(done) {
-      models.ThingToDo.find(done)
-    },
-  }, function(err, resultsHash) {
-    res.json(resultsHash)
-  })
-})
+// var async = require('async')
+// router.get('/fastCb', function(req, res, next) {
+//   async.parallel({
+//     hotels: function(done) {
+//       models.Hotel.find(done)
+//     },
+//     restaurants: function(done) {
+//       models.Restaurant.find(done)
+//     },
+//     thingsToDo: function(done) {
+//       models.ThingToDo.find(done)
+//     },
+//   }, function(err, resultsHash) {
+//     res.json(resultsHash)
+//   })
+// })
 
 
 //method 3: promises (sequence, slow)

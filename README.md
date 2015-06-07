@@ -1,0 +1,1 @@
+From the frontend, we will use AJAX to make HTTP requests for our data, and from the backend we will handle these requests by querying our database. Perhaps the most subtle and difficult task will involve integrating this new persistence feature into our existing app.

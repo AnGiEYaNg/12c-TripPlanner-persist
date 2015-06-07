@@ -154,3 +154,89 @@ attractionRouter.post('/thingsToDo', function (req, res, next) {
 attractionRouter.delete('/thingsToDo/:id', function (req, res, next) {
     // deletes a reference to a thing to do
 });
+
+router.param('id', function(req, res, next, id) {
+  mongoose.model('Day')
+    .findOne({ dayNum: Number(id) })
+    .exec()
+    .then(function(day) {
+      if(!day) throw new Error('not found')
+      req.day = day
+      next()
+    })
+    .then(null, next)
+})
+
+//Answer:
+// var express = require('express')
+// var router = express.Router()
+// var mongoose = require('mongoose')
+// module.exports = router
+
+// // // list all days
+// router.get('/', function (req, res, next) {
+//   mongoose.model('Day')
+//     .find()
+//     // .populate('thingsToDo restaurants hotels')
+//     .exec()
+//     .then(function(days) {
+//       res.json(days)
+//     })
+//     .then(null, next)
+// })
+
+// // //get one day
+// // router.get('/:dayId')
+
+// // //update a day
+// // router.put('/:dayId')
+
+// router.use('/:id/activities', require('./activities'))
+
+// // delete a day
+// router.delete('/:id')
+
+// // add day
+// router.post('/', function(req, res, next) {
+//   mongoose
+//     .model('Day')
+//     .create(req.body)
+//     .then(function(day) {
+//       res.json(day)
+//     })
+//     .then(null, next)
+// })
+
+
+
+// router.param('id', function(req, res, next, id) {
+//   mongoose.model('Day')
+//     .findOne({ dayNum: Number(id) })
+//     .exec()
+//     .then(function(day) {
+//       if(!day) throw new Error('not found')
+//       req.day = day
+//       next()
+//     })
+//     .then(null, next)
+// })
+
+// adding an activity to a day
+// body { type: 'hotels', id: 'asdlkfjsadflkjadfslkj' }
+
+
+// router.post('/', function(req, res, next) {
+//   console.log('req body', req.body)
+//   console.log('req day', req.day)
+//   req.day[req.body.type].addToSet(req.body.id)
+//   req.day.save()
+//     .then(function(day) {
+//       res.sendStatus(201)
+//     })
+//     .then(null, next)
+//   // push the activity id into the correct field in the document
+//   // save the day
+//   // send a response
+// })
+
+// router.delete('/:activityId')
